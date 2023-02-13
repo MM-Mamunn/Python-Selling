@@ -19,6 +19,7 @@ class wallet:
     
     def show(self):
         print(f'\t➡️ Name : {self.name}\n\t➡️ Current amount : {self.amount}\n🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️🛍️')
+        
         for i in range (0,len(self.cart)):
             #print(f'\t➡️Item name : {self.cart[i]['item']}\n\t➡️Price(per pcs) : {self.cart[i]['price']}\n\t➡️Quantity : {self.cart[i]['quantity']}\n')
             #print("hi")
@@ -32,15 +33,21 @@ class wallet:
             print(self.cart[i]['quantity'] * self.cart[i]['price']  )
             print("\n⬇️ ⬇️ ⬇️ ⬇️ ⬇️  ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️")
         
+        if(len(self.cart) == 0):
+            print("\n\t⚠️⚠️ Nothing in Cart\n")
+        
      
     def checkout(self): 
         price = 0; 
+        
         for i in range(0,len(self.cart)): 
             #print(self.cart[i]['item']) 
             price = price +( self.cart[i]['quantity'] *  self.cart[i]['price'] )
         
         if(price > self.amount ):
             print(f'➡️ Not enough credit')
+        elif(self.amount == 0):
+            print("\n\t\t➡️  You don't have enough amount\n")
         else:
             self.show()
             print(f'\n\t➡️ Current Balance: {self.amount}\n\t➡️ Payed: {price}\n\t➡️ New balance: {self.amount - price}\n\n')
@@ -48,6 +55,13 @@ class wallet:
             self.cart.clear()
         print(f'\t➡️ Enter any kew for exit:',end="")
         k = input()
+     
+    def clear_cart(self):
+        os.system('cls')
+        self.cart.clear()
+        print(f'\t\nCleared cart\n➡️ Enter any kew for exit:',end="")
+        k = input()
+
 
 print(f'➡️ Enter Your name : ',end = "") 
 na= input() 
@@ -60,10 +74,10 @@ while 0<L:
     #print("dd") 
     os.system('cls')
     print("\t➡️ Enter 1 for add item\n\t➡️ Enter 2 for checkout\n\t➡️ Enter 3 to view cart") 
-    choice = int(input()) 
+    choice = input()
     os.system('cls')
  
-    if(choice == 1): 
+    if(choice == "1"): 
         
         print(f'➡️ Enter Item name : ',end="") 
         item = input() 
@@ -73,12 +87,16 @@ while 0<L:
         quantity = int(input()) 
         os.system('cls')
         object.add(item,price,quantity)
-    elif(choice == 2):
+    elif(choice == "2"):
         os.system('cls')
         object.checkout()
     
-    elif(choice == 3):
+    elif(choice == "3"):
         os.system('cls')
-        object.show();
-        print(f'\n\n\t➡️ Enter any kew for exit:',end="")
+        object.show()
+        print(f'\n\n\t➡️ Enter 1 for clear cart\n\t➡️ Enter any other kew for exit')
         k = input()
+        if(k == "1"):
+            object.clear_cart();
+        
+
