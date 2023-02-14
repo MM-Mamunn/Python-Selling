@@ -19,7 +19,7 @@ class wallet:
     
     
     def show(self):
-        print(f'\t➡️ Name : {self.name}\n\t➡️ Current amount : {self.amount}\n🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️')
+        print(f'\t➡️ Name : {self.name}\n\t➡️ Current amount : {self.amount}\n  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️  🛍️')
         
         for i in range (0,len(self.cart)):
             #print(f'\t➡️Item name : {self.cart[i]['item']}\n\t➡️Price(per pcs) : {self.cart[i]['price']}\n\t➡️Quantity : {self.cart[i]['quantity']}\n')
@@ -95,7 +95,7 @@ while 0<L:
     elif(choice == "3"):
         os.system('cls')
         object.show()
-        print(f'\n\n\t➡️ Enter 1 for clear cart\n\t➡️ Enter any other kew for exit\n\n👉 ',end="")
+        print(f'\n\n\t➡️ Enter 1 for clear cart\n\t➡️ Enter any other kew for exit\n\n\t👉 ',end="")
         k = input()
         if(k == "1"):
             object.clear_cart();
